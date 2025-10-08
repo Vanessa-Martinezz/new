@@ -52,17 +52,22 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .slide {
             width: 100%;
             height: 100%;
+            flex: 1;
             display: none;
             position: absolute;
             top: 0;
             left: 0;
             opacity: 0;
             transition: opacity 0.6s ease;
+            overflow-y: auto;
+            overflow-x: hidden;
         }
 
         .slide.active {
@@ -71,8 +76,8 @@
         }
 
         .slide-content {
-            padding: 60px 80px;
-            height: 100%;
+            padding: 60px 80px 120px 80px;
+            min-height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -554,7 +559,7 @@
             }
 
             .slide-content {
-                padding: 50px 40px;
+                padding: 50px 40px 140px 40px;
             }
 
             .slide h1 {
@@ -573,20 +578,24 @@
         @media (max-width: 768px) {
             body {
                 align-items: flex-start;
-                padding: 10px 0;
+                padding: 0;
             }
 
             .presentation-wrapper {
                 width: 100%;
-                height: auto;
-                min-height: 100vh;
+                height: 100vh;
+                max-height: 100vh;
                 border-radius: 0;
             }
 
+            .slide {
+                height: calc(100vh - 80px);
+            }
+
             .slide-content {
-                padding: 30px 24px;
+                padding: 30px 24px 160px 24px;
                 justify-content: flex-start;
-                padding-top: 60px;
+                padding-top: 40px;
             }
 
             .slide h1 {
@@ -600,7 +609,7 @@
             }
 
             .content-list li {
-                font-size: 24px;
+                font-size: 22px;
                 padding-left: 28px;
                 margin-bottom: 16px;
                 line-height: 1.6;
@@ -609,25 +618,27 @@
             .balance-icon {
                 width: 80px;
                 height: 80px;
+                margin-bottom: 20px;
             }
 
             .authors {
-                font-size: 27px;
+                font-size: 26px;
                 margin-top: 40px;
             }
 
             .legal-quote {
-                font-size: 24px;
+                font-size: 22px;
                 padding: 18px;
                 margin: 20px 0;
             }
 
             .subsection-title {
-                font-size: 27px;
+                font-size: 26px;
+                margin-top: 20px;
             }
 
             .final-quote {
-                font-size: 36px;
+                font-size: 34px;
                 padding: 20px 0;
                 margin: 30px 0;
             }
@@ -635,33 +646,45 @@
             .references-section {
                 padding: 20px;
                 margin-top: 30px;
+                margin-bottom: 20px;
             }
 
             .references-section h3 {
-                font-size: 30px;
+                font-size: 28px;
             }
 
             .references-list li {
-                font-size: 21px;
+                font-size: 20px;
             }
 
             .controls {
+                position: fixed;
                 bottom: 15px;
-                right: 15px;
-                gap: 6px;
-                flex-wrap: wrap;
+                left: 50%;
+                transform: translateX(-50%);
+                right: auto;
+                gap: 8px;
+                flex-wrap: nowrap;
+                background: rgba(255, 255, 255, 0.95);
+                padding: 8px 12px;
+                border-radius: 12px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             }
 
             .control-btn {
                 padding: 10px 16px;
-                font-size: 19px;
+                font-size: 16px;
             }
 
             .slide-counter {
-                bottom: 15px;
-                left: 15px;
-                font-size: 21px;
+                position: fixed;
+                top: 15px;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: auto;
+                font-size: 18px;
                 padding: 8px 16px;
+                z-index: 101;
             }
 
             .notes-content {
@@ -669,21 +692,26 @@
                 max-width: 90%;
                 padding: 24px;
                 margin: 20px;
+                max-height: 70vh;
             }
 
             .notes-header h3 {
-                font-size: 33px;
+                font-size: 28px;
             }
 
             .notes-body {
-                font-size: 24px;
+                font-size: 20px;
             }
         }
 
         @media (max-width: 480px) {
+            .slide {
+                height: calc(100vh - 80px);
+            }
+
             .slide-content {
-                padding: 24px 16px;
-                padding-top: 50px;
+                padding: 24px 16px 170px 16px;
+                padding-top: 70px;
             }
 
             .slide h1 {
@@ -697,7 +725,7 @@
             }
 
             .content-list li {
-                font-size: 21px;
+                font-size: 19px;
                 padding-left: 24px;
                 margin-bottom: 14px;
             }
@@ -714,29 +742,42 @@
             }
 
             .authors {
-                font-size: 24px;
+                font-size: 22px;
                 margin-top: 30px;
             }
 
             .legal-quote {
-                font-size: 21px;
+                font-size: 19px;
                 padding: 14px;
             }
 
+            .subsection-title {
+                font-size: 22px;
+            }
+
             .final-quote {
-                font-size: 30px;
+                font-size: 28px;
                 padding: 16px 0;
                 margin: 20px 0;
             }
 
-            .control-btn {
-                padding: 8px 12px;
+            .references-section h3 {
+                font-size: 26px;
+            }
+
+            .references-list li {
                 font-size: 18px;
             }
 
+            .control-btn {
+                padding: 8px 12px;
+                font-size: 15px;
+            }
+
             .slide-counter {
-                font-size: 18px;
+                font-size: 16px;
                 padding: 6px 12px;
+                top: 10px;
             }
 
             .notes-content {
@@ -744,33 +785,61 @@
             }
 
             .notes-header h3 {
-                font-size: 30px;
+                font-size: 26px;
             }
 
             .close-btn {
-                font-size: 42px;
+                font-size: 36px;
+            }
+
+            .notes-body {
+                font-size: 18px;
             }
         }
 
         @media (orientation: landscape) and (max-height: 600px) {
             .presentation-wrapper {
-                height: auto;
-                min-height: 100vh;
+                height: 100vh;
+            }
+
+            .slide {
+                height: calc(100vh - 70px);
             }
 
             .slide-content {
-                padding: 30px 40px;
+                padding: 20px 40px 100px 40px;
                 justify-content: flex-start;
+            }
+
+            .slide h1 {
+                font-size: 38px;
+                margin-bottom: 20px;
+            }
+
+            .slide h2 {
+                font-size: 32px;
+                margin-bottom: 16px;
+            }
+
+            .content-list li {
+                font-size: 20px;
+                margin-bottom: 12px;
             }
 
             .controls {
                 bottom: 10px;
-                right: 10px;
+                padding: 6px 10px;
+            }
+
+            .control-btn {
+                padding: 6px 12px;
+                font-size: 14px;
             }
 
             .slide-counter {
-                bottom: 10px;
-                left: 10px;
+                top: 10px;
+                font-size: 16px;
+                padding: 6px 12px;
             }
         }
 
